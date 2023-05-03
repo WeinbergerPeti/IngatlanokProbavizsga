@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Ingatlanok;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IngatlanokController extends Controller
 {
     public function index()
     {
-        $ingatlanok=Ingatlanok::all();
+        $ingatlanok=DB::table("ingatlanok as i")
+        ->select("*")
+        ->join("kategoriak as k", "i.kategoria", "=", "k.id")
+        ->get();
         return $ingatlanok;
     }
 

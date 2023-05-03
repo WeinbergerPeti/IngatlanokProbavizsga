@@ -9,6 +9,12 @@ class IngatlanokController
         const adatFeldolgozModel = new AdatFeldolgozModel(token);
 
         adatFeldolgozModel.adatBe("/ingatlanok", this.ingatlanokFeltolt)
+
+        $(window).on("erdekelGomb", (event)=>
+        {
+            console.log(event.detail);
+            alert(`${event.detail.nev} ${event.detail.leiras} ${event.detail.hirdetesDatuma} ${event.detail.tehermentes} ${event.detail.ar} ${event.detail.kepUrl}`);
+        })
     }
     ingatlanokFeltolt(tomb)
     {

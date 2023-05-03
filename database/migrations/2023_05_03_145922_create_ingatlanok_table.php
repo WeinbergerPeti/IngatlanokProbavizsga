@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ingatlanok', function (Blueprint $table) {
-            $table->id();
+            $table->id("ingatlan_id");
             $table->foreignId("kategoria")->references("id")->on("kategoriak");
             $table->string("leiras");
             $table->date("hirdetesDatuma")->default(Carbon::now());
