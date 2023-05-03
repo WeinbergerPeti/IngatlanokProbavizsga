@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\IngatlanokController;
+use App\Http\Controllers\KategoriakController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +29,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get("/ingatlanok", [IngatlanokController::class, "index"]);
+Route::get("/ingatlanok/{id}", [IngatlanokController::class, "show"]);
+Route::post("/ingatlanok", [IngatlanokController::class, "store"]);
+Route::put("/ingatlanok/{id}", [IngatlanokController::class, "update"]);
+Route::delete("/ingatlanok/{id}", [IngatlanokController::class, "destroy"]);
+
+Route::get("/kategoriak", [KategoriakController::class, "index"]);
+Route::get("/kategoriak/{id}", [KategoriakController::class, "show"]);
+Route::post("/kategoriak", [KategoriakController::class, "store"]);
+Route::put("/kategoriak/{id}", [KategoriakController::class, "update"]);
+Route::delete("/kategoriak/{id}", [KategoriakController::class, "destroy"]);
 
 require __DIR__.'/auth.php';
